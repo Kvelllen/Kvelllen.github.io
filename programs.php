@@ -1,0 +1,157 @@
+<?php
+session_start();
+$user = $_SESSION['user'] ?? null;
+?>
+
+
+<!DOCTYPE html>
+<html class="programs_html">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PELAGIC CLUB</title>
+	<meta name="description" content="Night club, Ukraine Odesa, Near the sea, Programs page.">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body class="programs_html">
+	<header>
+		<hr>
+
+		<?php if ($user): ?>
+		<div style="position: absolute; top: 32px; left: 20px;" class="glowing_div">
+            <span>🜲 Welcome, <?= htmlspecialchars($user) ?></span>
+		</div>
+		<?php endif; ?>
+
+		<h1>PELAGIC CLUB</h1>
+
+		<div style="position: absolute; top: 20px; right: 20px;">
+			<?php if ($user): ?>
+				<form action="logout.php" method="POST" style="display: inline;">
+					<button type="submit" class="any_button">Logout</button>
+				</form>
+			<?php else: ?>
+				<a href="login.php" class="any_button">Login</a>
+			<?php endif; ?>
+		</div>
+
+		<hr>
+	</header>
+
+	<nav>
+		<div class="navbar">
+			<ul>
+				<li><a href="index.php">About us</a></li>
+				<li><a class="selected" href="programs.php">Programs</a></li>
+				<li><a href="locations.php">Locations</a></li>
+				<li><a href="contact_us.php">Contact us</a></li>
+			</ul>
+		</div>
+		<hr>
+	</nav>
+
+	<main>
+		<h2>Programs</h2>
+
+		<div class="container_for_boxes">
+			<div class="glowing_div"
+				style="--background_color: #110018;
+					   --box_shadow_color: #a600ff;
+					   --border_color: #6a00a3;
+					   --text_color: #af00de;
+					   --hover_background_color: #23002f;
+					   --hover_box_shadow_color: #b600e5;
+					   --hover_text_shadow: #4b006b;">
+				<div class="box">
+					<img src="images/about_us_2.jpg" class="glowing_div">
+					<h3>Ordinary</h3>
+					<p>Included: bar, dance floor, striptease, tables with table games, 1 free drink.</p>
+					<br><br>
+					<p>7$/night</p>
+				</div>
+			</div>
+
+			<div class="glowing_div"
+				style="--background_color: #001415;
+					   --box_shadow_color: #00c9d8;
+					   --border_color: #00a2ae;
+					   --text_color: #00bdd0;
+					   --hover_background_color: #002a2f;
+					   --hover_box_shadow_color: #00eeff;
+					   --hover_text_shadow: #00606e;">
+				<div class="box">
+					<img src="images/about_us_1.jpg" class="glowing_div"
+						style="--background_color: #001415;
+						   --box_shadow_color: #00c9d8;
+						   --border_color: #007c85;
+						   --text_color: #00cee1;
+						   --hover_background_color: #002a2f;
+						   --hover_box_shadow_color: #00eeff;
+						   --hover_text_shadow: #00606e;">
+					<h3>Premium</h3>
+					<p>Also included: large pool, billiards room, poker tables with croupier, 1 free drink.</p>
+					<br><br>
+					<p>15$/night</p>
+				</div>
+			</div>
+
+			<div class="glowing_div" 
+				style="--background_color: #171800;
+					   --box_shadow_color: #c0c100;
+					   --border_color: #eeef00;
+					   --text_color: #bbad00;
+					   --hover_background_color: #222400;
+					   --hover_box_shadow_color: #e3ed00;
+					   --hover_text_shadow: #788000;">
+				<div class="box">
+					<img src="images/about_us_3.jpg" class="glowing_div" 
+						style="--background_color: #171800;
+						   --box_shadow_color: #c0c100;
+						   --border_color: #959500;
+						   --text_color: #ccbd00;
+						   --hover_background_color: #222400;
+						   --hover_box_shadow_color: #e3ed00;
+						   --hover_text_shadow: #788000;">
+					<h3>VIP</h3>
+					<p>Also included: private soundproof room (better do a reservation), special thai massage.</p>
+					<br><br>
+					<p>65$/night</p>
+				</div>
+			</div>
+
+			<div class="glowing_div"
+				style="--background_color: #040018;
+					   --box_shadow_color: #0005c1;
+					   --border_color: #00139f;
+					   --text_color: #0001dc;
+					   --hover_background_color: #080032;
+					   --hover_box_shadow_color: #0001ed;
+					   --hover_text_shadow: #000f81;">
+				<div class="box">
+					<img src="images/friday_special_event.jpg" class="glowing_div"
+						style="--background_color: #040018;
+						   --box_shadow_color: #0005c1;
+						   --border_color: #00139f;
+						   --text_color: #0001dc;
+						   --hover_background_color: #060025;
+						   --hover_box_shadow_color: #0001ed;
+						   --hover_text_shadow: #000f81;">
+					<h3>FRIDAY Event</h3>
+					<p>Included: beach party event.</p>
+					<p>Needs to be paid on top of usual tariff.</p>
+					<br>
+					<p>+10$/night</p>
+				</div>
+			</div>
+		</div>
+		<h3></h3>
+	</main>
+
+	<footer>	
+		<hr>
+		<p>&copy;Copyrights reserved</p>
+	</footer>
+	
+</body>
+</html>

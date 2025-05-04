@@ -1,0 +1,72 @@
+<?php
+session_start();
+$user = $_SESSION['user'] ?? null;
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>PELAGIC CLUB</title>
+	<meta name="description" content="Night club, Ukraine Odesa, Near the sea, Contact_Us page.">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/index.css" />
+
+	<!-- ICONS -->
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body class="contact_us_html">
+	<header>
+		<hr>
+
+		<?php if ($user): ?>
+		<div style="position: absolute; top: 32px; left: 20px;" class="glowing_div">
+            <span>🜲 Welcome, <?= htmlspecialchars($user) ?></span>
+		</div>
+		<?php endif; ?>
+
+		<h1>PELAGIC CLUB</h1>
+
+		<div style="position: absolute; top: 20px; right: 20px;">
+			<?php if ($user): ?>
+				<form action="logout.php" method="POST" style="display: inline;">
+					<button type="submit" class="any_button">Logout</button>
+				</form>
+			<?php else: ?>
+				<a href="login.php" class="any_button">Login</a>
+			<?php endif; ?>
+		</div>
+
+		<hr>
+	</header>
+
+	<nav>
+		<div class="navbar">
+			<ul>
+				<li><a href="index.php">About us</a></li>
+				<li><a href="programs.php">Programs</a></li>
+				<li><a href="locations.php">Locations</a></li>
+				<li><a class="selected" href="contact_us.php">Contact us</a></li>
+			</ul>
+		</div>
+		<hr>
+	</nav>
+
+	<main>
+		<h2>Contact us</h2>
+		<section>
+			<p><span class="material-symbols-outlined">mail</span>&nbsp;&nbsp;&nbsp;&nbsp;Email: pelagiclub@gmail.com</p>
+			<p><span class="material-symbols-outlined">phone_in_talk</span>&nbsp;&nbsp;&nbsp;&nbsp;Telephone: +380670995309, +380670999309</p>
+			<p><span class="material-symbols-outlined">share</span>&nbsp;&nbsp;&nbsp;&nbsp;Link: pelagiclub.ua</p>
+		</section>
+	</main>
+	
+	<footer>
+		<hr>
+		<p>&copy;Copyrights reserved</p>
+	</footer>
+
+</body>
+</html>

@@ -1,0 +1,660 @@
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* FOR DEVICE COMPATABILITY */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+@media screen and (max-width: 1103px){
+	.index_html main section{
+		width: 100%;
+	}
+	.index_html main aside{
+		display: none;
+	}
+}
+
+
+@media screen and (max-width: 905px){
+	.index_html p{
+		font-size: 0.99rem;
+	}
+	nav .navbar ul li a{
+        margin-right: 1.5vw;
+        margin-left: 1.5vw;
+        font-size: 0.99rem;
+	}
+	.index_html section h2{
+		margin-top: 5px; margin-bottom: 25px;
+	}
+
+
+/*	.locations_html .glowing_div{
+		width: auto;
+	}
+
+	.locations_html main{
+		flex-direction: column;
+    	align-items: center;
+	}
+	.locations_html section{
+		flex: none;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.locations_html section p, .locations_html section h2{
+		max-width: 80%;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.locations aside img{
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	.locations_html section p{
+		font-size: 0.9rem;
+	}
+	.locations_html section h2{
+		font-size: 0.99rem;
+	}
+	.locations_html section img{
+		display: none;
+	}
+
+	.index_html header .glowing_div, .programs_html header .glowing_div
+	.locations_html header .glowing_div, .contact_us_html header .glowing_div{
+		display: none;
+	}*/
+}
+
+
+@media screen and (max-width: 716px){
+	.index_html p{
+		font-size: 0.8rem;
+	}
+	nav .navbar ul li a{
+        font-size: 0.95rem;
+	}
+	.index_html h3{
+		font-size: 0.99rem;
+	}
+	.index_html h4{
+		font-size: 0.99rem;
+	}
+}
+
+
+@media screen and (max-width: 597px){
+	.index_html section .programs_image_div, .index_html section .locations_image_div{
+		max-width: 50%;
+		margin: 30px auto;
+	}
+	.index_html section img, .index_html section img{
+		max-width: 100%;
+        width: auto;
+        margin: 20px auto;
+	}
+	.index_html section h2{
+		margin-top: 0px; margin-bottom: 20px;
+	}
+	.index_html section h3{
+		margin-top: 0px; margin-bottom: 20px;
+		font-size: 0.9rem;
+	}
+	.index_html section h4{
+		clear: both;
+		margin-top: 0px; margin-bottom: 0px;
+		font-size: 1.3rem;
+	}
+	nav .navbar ul li a{
+        font-size: 0.6rem;
+	}
+
+	.index_html header .glowing_div, .index_html header .any_button,
+	.programs_html header .glowing_div, .programs_html header .any_button, 
+	.locations_html header .glowing_div, .locations_html header .any_button, 
+	.contact_us_html header .glowing_div, .contact_us_html header .any_button{
+		display: none;
+	}
+}
+
+/*programs_html*/
+@media screen and (max-width: 584px){
+	.programs_html .container_for_boxes .box{
+		max-width: 187.5px;
+		text-align: center;
+		max-height: 375px;
+	}
+	.programs_html section h2{
+		margin-bottom: 50px;
+	}
+	.programs_html .container_for_boxes .box h3{
+		font-size: 1.2rem;
+	}
+	.programs_html .container_for_boxes .box p{
+		font-size: 1rem;
+	}
+}
+
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* ENTIRE FILE */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+* {
+	box-sizing: border-box;
+	cursor: default;
+}
+
+html{
+	font-size: 100%;
+	height: 100%;
+	margin: 0px;
+}
+@font-face {
+    font-family: 'Jersey 25';
+    src: url('../fonts/Jersey25-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+	background-color: #020002;
+	font-family: 'Jersey 25', Times, serif;
+	letter-spacing: 1.5px;
+	margin: 0px;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+hr{
+	border: 1px solid #460062;
+}
+
+.glowing_div{
+	/*Stating a necessary inline css pattern + setting default values (white by default): do not delete this part!*/
+	--background_color: #20002e;
+	--box_shadow_color: #7200b0;
+	--border_color: #6a00a3;
+	--text_color: #af00de;
+	--hover_background_color: #23002f;
+	--hover_box_shadow_color: #9a00c5;
+	--hover_text_shadow: #4b006b;
+	/*End of parameters*/
+
+	background-color: 			var(--background_color);
+	box-shadow: 0 0 25px		var(--box_shadow_color);
+	border: 2px groove 			var(--border_color);
+	border-radius: 10px;
+
+	transition: all 0.2s ease;
+}
+.glowing_div p, .glowing_div h3{
+	color: 						var(--text_color);
+}
+.glowing_div:hover{
+	background-color: 			var(--hover_background_color);
+	border-color: 				var(--box_shadow_color);  /*same as --box_shadow_color*/
+	box-shadow: 0 0 25px 		var(--hover_box_shadow_color);
+	text-shadow: 2px 2px 8px 	var(--hover_text_shadow);
+}
+
+
+.material-symbols-outlined {
+	font-variation-settings:
+	'FILL' 1,
+	'wght' 400,
+	'GRAD' 0,
+	'opsz' 48;
+	font-size: 48px;
+	color: #7200b0;
+	vertical-align: -0.3rem;
+}
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* HEADER */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+header h1{
+	color: #af00de;
+	text-align: center;
+	letter-spacing: 10px;
+	text-shadow: 2px 2px 5px #620094;
+}
+header span{
+	display: inline;
+	color: #9200c4;
+	padding: 10px;
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+	letter-spacing: 1px;
+	color: #9100df;
+}
+
+.index_html header .any_button, .programs_html header .any_button,
+.locations_html header .any_button, .contact_us_html header .any_button{
+	position: absolute;
+	top: 3px;
+	right: 5px;
+	font-size: 1.4rem;
+}
+.any_button{
+	background-color: #1f0027;
+	text-shadow: 0 0 3px #a000f6;
+	color: #af00de;
+	padding: 10px 20px;
+	border: 3px groove #350046;
+	border-radius: 10px;
+	font-size: 1.4rem;
+	text-decoration: none;
+	transition: all 0.15s ease;
+}
+.any_button:hover{
+	background-color: #2d003b;
+	color: #c900ff;
+	border-color: #6a00a3;
+	box-shadow: 0 0 15px #350046;
+}
+.any_button:active{
+	background-color: #270033;
+	border-color: #51007c;
+	box-shadow: 0 0 15px #6900ad;
+}
+
+
+nav .navbar ul{
+	background-color: #1f0027;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	display: flex;
+    justify-content: center;
+    box-shadow: 0 0 1px 2px #8300a5;
+}
+nav .navbar a{
+	color: white;
+	text-decoration: none;
+	text-align: center;
+	font-size: 1.2rem;
+	display: block;
+	width: 15vw;
+	margin-right: 2.5vw;
+	margin-left: 2.5vw;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-radius: 3px;
+	float: left;
+	cursor: pointer;
+}
+nav .navbar a:hover{
+	background-color: #4a005e;
+	box-shadow: 0 0 15px #4a005e;
+	transition: all 0.2s ease;
+}
+nav .navbar a:active{
+	background-color: #370045;
+	box-shadow: 0 0 15px #370045;
+}
+nav .navbar .selected{
+	background-color: #38004e;
+	box-shadow: 0 0 10px #38004e;
+}
+nav .navbar .selected:hover{
+	background-color: #4a005e;
+	box-shadow: 0 0 15px #4a005e;
+	transition: all 0.2s ease;
+}
+nav .navbar .selected:active{
+	background-color: #370045;
+	box-shadow: 0 0 15px #370045;
+}
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* MAIN */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+main{
+	margin: 15px;
+	display: flow-root;
+	flex-grow: 1;
+}
+main h2{
+	color: #af00de;
+	text-align: center;
+	font-size: 1.8rem;
+	margin-top: 5px; margin-bottom: 25px;
+	letter-spacing: 4px;
+}
+main h3{
+	color: #9200c4;
+	text-align: center;
+	margin-top: 5px;
+	font-size: 1.4rem;
+	margin-bottom: 20px;
+	letter-spacing: 3.5px;
+}
+main h4{
+	color: #af00de;
+	text-align: center;
+	margin-top: 20px;
+	font-size: 1.6rem;
+	margin-bottom: 20px;
+	letter-spacing: 3.5px;
+}
+main p{
+	color: #af00de;
+	font-size: 1.3rem;
+	margin: 20px;
+}
+main img{
+	margin-right: 5%;
+	margin-left: 5%;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	border-radius: 5px;
+}
+main a *, main a{
+	color: #af00de;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+/*.index_html main, .programs_html main, 
+.locations_html main, .contact_us_html main{
+	flex: 1;
+	padding: 1rem;
+}
+
+.index_html body, .programs_html body, 
+.locations_html body, .contact_us_html body{
+	
+}*/
+
+
+
+section{
+	float: left;
+	width: 80%;
+	padding: 10px;
+}
+section .programs{
+	display: block;
+	display: flow-root;
+	cursor: pointer;
+
+	transition: all 0.2s ease;
+}
+section .programs:hover{
+	background-color: #0a000e;
+	border-radius: 15px;
+	text-shadow: 2px 2px 5px #580087;
+}
+section .programs img{
+	float: left;
+}
+section .locations{
+	display: block;
+	display: flow-root;
+	cursor: pointer;
+
+	transition: all 0.2s ease;
+}
+section .locations:hover{
+	background-color: #0a000e;
+	border-radius: 15px;
+	text-shadow: 2px 2px 5px #580087;
+}
+section .locations img{
+	float: right;
+	
+}
+
+aside{
+	float: left;
+	width: 20%;
+	padding: 10px;
+	text-align: center;
+}
+aside img{
+	width: 80%;
+}
+aside a{
+	font-size: 1.2rem;
+}
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* FOOTER */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+footer{
+	clear: both;
+	text-align: center;
+	color: #af00de;
+}
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* PROGRAMS */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.programs_html .container_for_boxes{
+	display: flow-root;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	column-gap: 2rem;
+	row-gap: 2rem;
+}
+
+.programs_html .box{
+	display: flow-root;
+	max-width: 250px;
+	text-align: center;
+	max-height: 420px;
+}
+.programs_html .box img{
+	width: 60%;
+	max-height: 120px;
+	border-width: 1.5px;
+}
+
+.programs_html .box *:hover, .box:hover{
+	cursor: pointer;
+}
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* LOCATIONS */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.locations_html main{
+	display: flex;
+}
+
+.locations_html section{
+	max-width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1;
+	margin-top: 0px;
+}
+.locations_html section h2{
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+.locations_html section p{
+	margin-bottom: 5%;
+}
+.locations_html section img{
+	margin-left: 0%;
+	margin-right: 20%;
+	max-width: 80%;
+	margin-bottom: 0px;
+}
+
+.locations_html aside{
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	margin-top: 0px;
+}
+.locations_html aside img{
+	width: 100%;
+	margin: 10px;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* CONTACT_US */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.contact_us_html main{
+	margin-top: 25px;
+}
+
+.contact_us_html section{
+	margin-left: 10%;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+/* LOGIN */
+
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////////////////////////////*/
+
+
+.login_html h1{
+	font-size: 3.3rem;
+	text-shadow: 2px 2px 5px #a000f6;
+	color: #a000f6;
+}
+
+.login_html header{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_html header .glowing_div{
+	padding: 0px 45px;
+	display: inline-block;
+    margin: 120px auto 0px auto;
+    background-color: #13001b;
+}
+.login_html main{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_html .glowing_div{
+	padding: 20px 80px;
+	margin-top: 0px;
+	display: flex;
+    justify-content: center;
+    background-color: #13001b;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_html label{
+	color: #a000f6;
+	text-shadow: 0 0 3px #a000f6;
+	text-align: center;
+	margin-top: 5px;
+	font-size: 1.6rem;
+	margin-bottom: 15px;
+	letter-spacing: 3.5px;
+}
+
+.login_html .user_input{
+	margin-bottom: 0px;
+	background-color: #1f0027;
+ 	color: #af00de;
+	padding: 10px 15px;
+	font-size: 1rem;
+	text-shadow: 0px 0px 2px #a000f6;
+	border: 2px solid #6a00a3;
+	box-shadow: 0 0 10px #440070;
+	border-radius: 10px;
+	max-width: 300px;
+	transition: all 0.15s ease;
+}
+.login_html .user_input:hover{
+	border-color: #9100df;
+}
+.login_html .user_input:focus{
+	border-color: #9b00ff;
+	box-shadow: 0 0 25px #440070;
+	text-shadow: 0px 0px 3px #a000f6;
+	outline: none
+}
+
+
+.login_html_buttons_container{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 300px;
+}
+
+
+.login_html_buttons_container .any_button{
+	width: 47%;
+	padding: 10px;
+	margin-right: 5px;
+	margin-left: 5px;
+}

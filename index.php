@@ -1,0 +1,108 @@
+<?php
+session_start();
+$user = $_SESSION['user'] ?? null;
+?>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PELAGIC CLUB</title>
+	<meta name="description" content="Night club, Ukraine Odesa, Near the sea, Main page.">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body class="index_html">
+	<header>
+		<hr>
+
+		<?php if ($user): ?>
+		<div style="position: absolute; top: 32px; left: 20px;" class="glowing_div">
+            <span>🜲 Welcome, <?= htmlspecialchars($user) ?></span>
+		</div>
+		<?php endif; ?>
+
+		<h1>PELAGIC CLUB</h1>
+
+		<div style="position: absolute; top: 20px; right: 20px;">
+			<?php if ($user): ?>
+				<form action="logout.php" method="POST" style="display: inline;">
+					<button type="submit" class="any_button">Logout</button>
+				</form>
+			<?php else: ?>
+				<a href="login.php" class="any_button">Login</a>
+			<?php endif; ?>
+		</div>
+
+		<hr>
+	</header>
+
+	<nav>
+		<div class="navbar">
+			<ul>
+				<li><a class="selected" href="index.php">About us</a></li>
+				<li><a href="programs.php">Programs</a></li>
+				<li><a href="locations.php">Locations</a></li>
+				<li><a href="contact_us.php">Contact us</a></li>
+			</ul>
+		</div>
+		<hr>
+	</nav>
+
+	<main>
+		<section>
+			<h2>About us</h2>
+
+			<h3>The club, located south of Odesa near the sea, to make your night party unforgettable</h3>
+
+			<hr>
+
+			<a href="programs.php" class="clickable_block">
+			<div class="programs">
+				<div class="programs_image_div">
+					<img class="glowing_div" src="images/about_us_2.jpg" width="32%">
+				</div>
+
+				<div>
+					<h4>Programs</h4>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;We offer various services and programs. <strong>Every Friday</strong>, after a tiresome work/study week, we have a special program on the beach, inviting popular DJs and singers. What can be better than late night relaxation, with loud music and plenty of interesting events?</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To check programs, go to <a href="programs.php"><span style="text-decoration: underline;">Programs</span></a>.</p>
+				</div>
+			</div>
+			</a>
+
+			<a href="locations.php" class="clickable_block">
+			<div class="locations">
+				<div class="locations_image_div">
+					<img class="glowing_div" src="images/about_us_1.jpg" width="32%">
+				</div>
+
+				<div>
+					<h4>Locations</h4>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Club near the sea... what can be better? We are placed at various locations near the beach, allowing some parties to take place near the seaside, or even in/under the water! Of course, all safety measures are taken. Find us!</p>
+					<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;To check locations, go to <a href="locations.php"><span style="text-decoration: underline;">Locations</span></a>.</p>
+				</div>
+			</div>
+			</a>
+
+		</section>
+
+		<aside class="glowing_div">
+			<h3>Friday special event!</h3>
+			<a href="programs.php"><img class="glowing_div" src="images/friday_special_event.jpg"></a>
+			<p>Special guests, beach program, free alcohol and much more!</p>
+			<p>Check: <a href="programs.php">Programs</a>.</p>
+			<br><br><br><br><br><br><br><br><br><br>
+		</aside>
+	</main>
+
+	<footer>
+		<hr>
+		<p>&copy; Copyrights reserved</p>
+	</footer>
+
+	<script src="js/index.js"></script>
+</body>
+</html>

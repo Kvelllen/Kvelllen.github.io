@@ -1,0 +1,165 @@
+<?php
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = strtolower(trim($_POST['username'] ?? ''));
+    $password = trim($_POST['password'] ?? '');
+    $action = $_POST['action'] ?? '';
+
+    $users_file = 'data/users.txt'; // our "database"
+
+    if (empty($email) || empty($password)) {
+        $error = "Please fill in both fields.";
+    } else {
+        $users = file_exists($users_file) ? file($users_file, FILE_IGNORE_NEW_LINES) : [];
+
+        $user_found = false;
+        foreach ($users as $user_line) {
+            list($saved_email, $saved_password) = explode('|', $user_line);
+            if ($email === $saved_email) {
+                $user_found = true;
+                break;
+            }
+        }
+
+        if ($action === 'login') {
+            if ($user_found && ($password === $saved_password)) {
+                $_SESSION['user'] = $email;
+                header("Location: index.php");
+                exit;
+            } else {
+                $error = "Invalid email or password.";
+            }
+        } elseif ($action === 'register') {
+            if ($user_found) {
+                $error = "Email already registered.";
+            } else {
+                file_put_contents($users_file, $email . '|' . $password . PHP_EOL, FILE_APPEND);
+                $success = "Registration successful! Now you can login.";
+            }
+        } else {
+            $error = "Unknown action.";
+        }
+    }
+}
+?>
+<!-- HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PELAGIC CLUB</title>
+    <meta name="description" content="Night club, Ukraine Odesa, Near the sea, Login page.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="login_html">
+    <header>
+        <div class="glowing_div"><h1>PELAGIC CLUB</h1></div>
+    </header>
+
+    <main>
+        <div class="glowing_div">
+            <form action="login.php" method="POST" class="login_form">
+                <label for="username">Email</label>
+                <input type="email" id="username" name="username" class="user_input" placeholder="Enter your email" required>
+
+                <br><br>
+
+                <label for="password">Password</label>
+                <div style="position: relative;">
+                    <input type="password" id="password" name="password" class="user_input" placeholder="Enter your password" required>
+                    <span id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">🌚</span>
+                </div>
+
+                <div id="password-strength" style="margin-top: 10px;">
+                    <div id="strength-bar" style="height: 13px; width: 100%; border: 2px solid #6a00a3; border-radius: 10px;">
+                        <div id="strength-fill" style="margin: 2px; height: 5px; width: 0%; background: red; border-radius: 5px;"></div>
+                    </div>
+                    <p id="strength-text" style="font-size: 0.9em; margin-top: 5px;">Password strength: -</p>
+                </div>
+
+                <br><br>
+
+                <div class="login_html_buttons_container">
+                    <a href="index.php" class="any_button">↺</a>
+                    <button type="submit" name="action" value="login" class="any_button">Login</button>
+                    <button type="submit" name="action" value="register" class="any_button">Register</button>
+                </div>
+            </form>
+
+            <?php if (!empty($error)): ?>
+                <p><?php echo htmlspecialchars($error); ?></p>
+            <?php endif; ?>
+
+            <?php if (!empty($success)): ?>
+                <p><?php echo htmlspecialchars($success); ?></p>
+            <?php endif; ?>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script>
+    // Password strength meter
+    const passwordInput = document.getElementById('password');
+    const strengthFill = document.getElementById('strength-fill');
+    const strengthText = document.getElementById('strength-text');
+
+    passwordInput.addEventListener('input', function() {
+        const password = passwordInput.value;
+        let strength = 0;
+
+        if (password.length >= 6) strength++;
+        if (password.match(/[a-z]/)) strength++;
+        if (password.match(/[A-Z]/)) strength++;
+        if (password.match(/[0-9]/)) strength++;
+        if (password.match(/[^a-zA-Z0-9]/)) strength++;
+
+        let percent = (strength / 5) * 98;
+        strengthFill.style.width = percent + "%";
+
+        if (strength <= 2) {
+            strengthFill.style.background = "red";
+            strengthText.textContent = "Password strength: Weak";
+        } else if (strength === 3 || strength === 4) {
+            strengthFill.style.background = "orange";
+            strengthText.textContent = "Password strength: Medium";
+        } else if (strength === 5) {
+            strengthFill.style.background = "green";
+            strengthText.textContent = "Password strength: Strong";
+        }
+    });
+
+    // Email validation
+    const emailInput = document.getElementById('username');
+    const form = document.querySelector('form');
+
+    form.addEventListener('submit', function(event) {
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        let valid = true;
+        let messages = [];
+
+        if (!email.includes('@') || !email.includes('.')) {
+            valid = false;
+            messages.push('Please enter a valid email address.');
+        }
+
+        if (!valid) {
+            event.preventDefault();
+            alert(messages.join('\n'));
+        }
+    });
+
+    // Password show/hide toggle
+    const togglePassword = document.getElementById('togglePassword');
+
+    togglePassword.addEventListener('click', function() {
+        const type = (passwordInput.getAttribute('type') === 'password') ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        togglePassword.textContent = (type === 'password') ? '🌚' : '🌝';
+    });
+    </script>
+</body>
+</html>
